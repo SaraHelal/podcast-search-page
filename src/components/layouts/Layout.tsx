@@ -9,7 +9,7 @@ export default function Layout({ children }: any) {
   const params = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(params.get("q") || "");
   const { results, loading } = useFetchSearch(searchQuery);
-  
+  console.log('results from main: ', results)
   return (
     <div className="flex">
       <Sidebar />

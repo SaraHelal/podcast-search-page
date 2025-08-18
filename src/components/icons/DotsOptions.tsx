@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function DotsOptions({ fill, setIsOptionsOpen, optionType, isOptionsOpen }: any) {
+export default function DotsOptions({ fill, setIsOptionsOpen, optionType }: any) {
   return (
     <div
       className="cursor-pointer"
      onClick={() =>
-        setIsOptionsOpen((prev: any) => ({
+        setIsOptionsOpen && setIsOptionsOpen((prev: any) => ({
           type: optionType,
           status: prev.type === optionType ? !prev.status : true, 
         }))
