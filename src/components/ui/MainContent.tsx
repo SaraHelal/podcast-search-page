@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import ScrollNextPrevArrows from "./ScrollNextPrevArrows";
 import DotsOptions from "../icons/DotsOptions";
 import PodcastsList from "./Podcasts/PodcastsList";
@@ -8,8 +8,18 @@ import EpisodesList from "./episodes/EpisodesList";
 export default function MainContent({ results, loading, searchQuery }: any) {
   const podcasts = results?.podcasts?.results || [];
   const episodes = results?.episodes?.results || [];
+  const [isOptionsOpen, setIsOptionsOpen] = useState<{
+    type: string;
+    status: boolean;
+  }>({
+    type: "",
+    status: false,
+  });
 
-    if (loading || !results) {
+  const [podcastLayout, setPodcastLayout] = useState("scrollable");
+  const [episodeLayout, setEpisodeLayout] = useState("grid");
+
+  if (loading || !results) {
     return <div className="spinner"></div>;
   }
 
@@ -28,25 +38,50 @@ export default function MainContent({ results, loading, searchQuery }: any) {
       </div>
     );
   }
-
+  // console.log('isOptionsOpen: ', isOptionsOpen);
   // 4. لو في نتائج
   return (
     <div>
       <div>
-        <div className="mt-12 flex justify-between items-center border-b border-b-[#2e2e38] py-2">
+        <div className="relative mt-12 flex justify-between items-center border-b border-b-[#2e2e38] py-2">
           <span>Top Podcasts for {searchQuery}</span>
-          <div className="flex ">
-            <ScrollNextPrevArrows />
-            <DotsOptions />
+          <div className="flex col">
+            <DotsOptions
+              fill="#ffffff"
+              optionType="podcasts"
+              setIsOptionsOpen={setIsOptionsOpen}
+              isOptionsOpen={isOptionsOpen}
+            />
+            {isOptionsOpen.type === "podcasts" && isOptionsOpen.status && (
+              <div className="dotOptionsList"  onClick={() => podcastLayout === "scrollable" ? setPodcastLayout("grid") : setPodcastLayout("scrollable")}>
+                <span
+                  className="p-[6px] block hover:bg-[#4E366D]" 
+                >
+                  Switch layout to {podcastLayout === "scrollable" ? "Grid" : "Scrollable"}
+                </span>
+              </div>
+            )}
           </div>
         </div>
-        <PodcastsList podcasts={podcasts} />
+        <PodcastsList podcasts={podcasts} layoutType={podcastLayout}  />
       </div>
       <div>
-        <div className="my-12 flex justify-between items-center border-b border-b-[#2e2e38] py-2">
+        <div className="relative my-12 flex justify-between items-center border-b border-b-[#2e2e38] py-2">
           <span>Top Episodes for {searchQuery}</span>
-          <div className="flex ">
-            <DotsOptions fill="#ffffff" />
+          <div className="flex flex-col">
+            <DotsOptions
+              fill="#ffffff"
+              optionType="episodes"
+              setIsOptionsOpen={setIsOptionsOpen}
+              isOptionsOpen={isOptionsOpen}
+            />
+            {isOptionsOpen.type === "episodes" && isOptionsOpen.status && (
+              <div className="dotOptionsList">
+                <span className="p-[6px] block hover:bg-[#4E366D]">
+                  Switch layout to Grid
+                </span>
+              </div>
+            )}
           </div>
         </div>
         <EpisodesList episodes={episodes} />

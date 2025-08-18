@@ -1,11 +1,11 @@
 @import "tailwindcss";
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+Arabic:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+Arabic:wght@400;600&display=swap");
 
 :root {
   --background: #161727;
   --foreground: #ededed;
-  --border-color: #2e2e38; 
+  --border-color: #2e2e38;
 }
 
 @theme inline {
@@ -19,8 +19,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   /* font-family: Arial, Helvetica, sans-serif; */
-    /* font-family: 'Inter', 'Noto Sans Arabic', sans-serif; */
-
+  /* font-family: 'Inter', 'Noto Sans Arabic', sans-serif; */
 }
 header {
   background-color: red;
@@ -34,8 +33,8 @@ header {
 .spinner {
   width: 75px;
   height: 75px;
-  border: 5px solid #39DCE4; /* لون الخلفية */
-  border-top: 5px solid #F695D3; /* لون الجزء المتحرك */
+  border: 5px solid #39dce4; /* لون الخلفية */
+  border-top: 5px solid #f695d3; /* لون الجزء المتحرك */
   border-radius: 50%;
   animation: spin 2s linear infinite;
   position: fixed;
@@ -45,6 +44,34 @@ header {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dotOptionsList {
+  top: 38px;
+  right: 10px;
+  background: -webkit-linear-gradient(bottom left, #404080, #6b4080);
+  background: -moz-linear-gradient(bottom left, #404080, #6b4080);
+  background: -o-linear-gradient(bottom left, #404080, #6b4080);
+  background: linear-gradient(to top right, #404080, #6b4080);
+  position: absolute;
+  width: 200px;
+  z-index: 1000000;
+  -webkit-box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.2),
+    0px 5px 5px hsla(237, 25%, 12%, 50%);
+  -moz-box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.2),
+    0px 5px 5px hsla(237, 25%, 12%, 50%);
+  box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.2),
+    0px 5px 5px hsla(237, 25%, 12%, 50%);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px;
 }
