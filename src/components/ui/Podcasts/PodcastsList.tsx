@@ -6,25 +6,21 @@ export default function PodcastsList({ podcasts, layoutType }: any) {
   console.log("podcast: ", layoutType);
   return (
     <div
-      className="flex flex-row gap-4 
+      className={
+        layoutType === "grid"
+          ? "grid grid-cols-6 gap-[15px] gap-y-[20px] py-[15px]"
+          : `flex gap-4 items-center overflow-hidden flex-nowrap pt-4 
+    
   overflow-x-auto
   [&::-webkit-scrollbar]:h-0.5 hover:[&::-webkit-scrollbar]:h-2
   [&::-webkit-scrollbar-track]:bg-gray-800
   [&::-webkit-scrollbar-thumb]:bg-[#404080]
-  [&::-webkit-scrollbar-thumb]:rounded-full"
+  [&::-webkit-scrollbar-thumb]:rounded-full`
+      }
     >
-      {/* قسم Top Podcasts */}
-      <div>
-        <div
-          className={`flex gap-3 overflow-auto ${
-            layoutType === "grid" ? "flex-wrap" : "flex-nowrap"
-          } pt-4`}
-        >
-          {podcasts?.map((item: any, idx: any) => {
-            return <Podcast key={idx} data={item} />;
-          })}
-        </div>
-      </div>
+      {podcasts?.map((item: any, idx: any) => (
+        <Podcast key={idx} data={item} />
+      ))}
     </div>
   );
 }

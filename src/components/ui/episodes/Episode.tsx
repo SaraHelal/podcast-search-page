@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Episode(data: any) {
   return (
-    <div className="flex justify-between w-80 border-b border-b-[#2e2e38]">
+    <div className="flex justify-between w-80 border-b border-b-[#2e2e38] cursor-pointer">
       <div className="flex gap-4 items-center">
         <div className="w-12 object-cover">
           <img src={data.data.artworkUrl60} width="100%" alt="" />
