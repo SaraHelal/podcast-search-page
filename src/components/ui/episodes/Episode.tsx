@@ -2,7 +2,6 @@ import DotsOptions from "@/components/icons/DotsOptions";
 import React from "react";
 
 export default function Episode(data: any) {
-  console.log("episodes: ", data);
   return (
     <div className="flex justify-between w-80 border-b border-b-[#2e2e38]">
       <div className="flex gap-4 items-center">

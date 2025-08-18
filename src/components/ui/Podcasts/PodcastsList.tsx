@@ -14,7 +14,6 @@ export default function PodcastsList({ podcasts }: { podcasts: any[] }) {
       <div>
         <div className="flex gap-3 overflow-auto flex-nowrap pt-4">
           {podcasts?.map((item: any, idx: any) => {
-            console.log("item: ", item);
             return <Podcast key={idx} data={item} />;
           })}
         </div>

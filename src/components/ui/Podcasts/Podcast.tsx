@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Podcast(data: any) {
-  console.log("podcast: ", data);
   return (
     <div className="flex flex-col gap-1">
       <div className="w-48 object-cover overflow-hidden rounded-md">
