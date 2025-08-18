@@ -2,18 +2,18 @@
 import React, { useEffect, useState } from "react";
 import Podcast from "./Podcast";
 
-export default function PodcastsList(results: any) {
-  console.log("results from podlists: ", results);
-
-  const { episodes, podcasts } = results.results;
-  console.log("podcasts from podlists: ", podcasts);
-  console.log("episodes from podlists: ", episodes);
+export default function PodcastsList({ podcasts }: { podcasts: any[] }) {
   return (
-    <div className="flex gap-4 overflow-auto flex-nowrap flex-col">
+    <div className="flex flex-row gap-4 
+  overflow-x-auto
+  [&::-webkit-scrollbar]:h-0.5 hover:[&::-webkit-scrollbar]:h-2
+  [&::-webkit-scrollbar-track]:bg-gray-800
+  [&::-webkit-scrollbar-thumb]:bg-[#404080]
+  [&::-webkit-scrollbar-thumb]:rounded-full">
       {/* قسم Top Podcasts */}
       <div>
-        <div className="flex gap-2 overflow-auto flex-nowrap">
-          {podcasts?.results?.map((item: any, idx: any) => {
+        <div className="flex gap-3 overflow-auto flex-nowrap pt-4">
+          {podcasts?.map((item: any, idx: any) => {
             console.log("item: ", item);
             return <Podcast key={idx} data={item} />;
           })}

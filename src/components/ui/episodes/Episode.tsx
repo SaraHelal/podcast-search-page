@@ -10,8 +10,8 @@ export default function Episode(data: any) {
           <img src={data.data.artworkUrl60} width="100%" alt="" />
         </div>
         <div>
-          <span>{data.data.trackName}</span>
-          <h5>{data.data.collectionName}</h5>
+          <span className="text-sm font-bold">{data.data.collectionName}</span>
+          <h5 className="text-xs text-[#E3BD71]">{data.data.collectionName}</h5>
         </div>
       </div>
       <DotsOptions fill="#5f5f5f" />
