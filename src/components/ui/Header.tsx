@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import ScrollNextPrevArrows from "./ScrollNextPrevArrows";
 import DotsOptions from "../icons/DotsOptions";
 
-export default function Header({ setSearchQuery }: any) {
-  const handleSearch = (e: any) => {
+type HeaderProps = {
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>
+};
+
+export default function Header({ setSearchQuery }: HeaderProps) {
+  const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false);
+  
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     window.history.replaceState(
       {},
@@ -11,8 +17,11 @@ export default function Header({ setSearchQuery }: any) {
       `?q=${encodeURIComponent(e.target.value)}`
     );
   };
-  const handleEnterKey = (e: any) => {
-    if (e.key === "Enter") setSearchQuery(e.target.value);
+  const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>)=>{
+    if (e.key === "Enter"){
+      const input = e.target as HTMLInputElement;
+      setSearchQuery(input.value);
+    } 
   };
   return (
     <div className="flex gap-2 my-3 items-center">
@@ -101,7 +110,7 @@ export default function Header({ setSearchQuery }: any) {
           Sign up
         </button>
       </div>
-      <DotsOptions />
+      <DotsOptions setIsOptionsOpen={setIsOptionsOpen}/>
     </div>
   );
 }

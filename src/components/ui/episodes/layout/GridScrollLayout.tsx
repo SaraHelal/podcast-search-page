@@ -1,7 +1,18 @@
 import DotsOptions from '@/components/icons/DotsOptions'
-import React from 'react'
+import Image from 'next/image';
+import React, { useState } from 'react'
 
-export default function GridScrollLayout({layoutType, img, trackName, title, formatedToDate, episodesDuration}: any) {
+interface GridScrollLayoutProps {
+  layoutType: string;
+  img: string;
+  trackName: string;
+  title: string;
+  formatedToDate: string;
+  episodesDuration: string
+}
+export default function GridScrollLayout({layoutType, img, trackName, title, formatedToDate, episodesDuration}: GridScrollLayoutProps) {
+  const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false);
+
   return (
     <div
           className={`relative ${layoutType === "scrollable" ? "flex-nowrap" : "flex-wrap"} flex-shrink-0 w-full md:w-[47%] lg:w-[24%] bg-gradient-to-br h-[110px]  transition-opacity duration-150 from-[#18053f] to-[#50335d] hover:from-[#280967] hover:to-[#815496] shadow-inner cursor-pointer rounded-md overflow-hidden`}
@@ -12,11 +23,9 @@ export default function GridScrollLayout({layoutType, img, trackName, title, for
         >
           <div className="flex justify-between gap-4 items-center w-full cursor-pointer h-full">
             <div className="flex-[2_2_0%] object-cover h-full overflow-hidden ">
-              <img
-                src={img}
-                className="w-full h-full object-cover"
-                alt={trackName}
-              />
+               
+            <Image src={img || "images/default-image.png"} width={100} height={100} className="w-full h-full object-cover" alt="image" />
+              
             </div>
             <div className="flex-[3_3_0%] text-left flex flex-col justify-between h-full py-4">
               <div className="flex flex-col gap-1">
@@ -38,7 +47,7 @@ export default function GridScrollLayout({layoutType, img, trackName, title, for
             </div>
           </div>
           <div className="absolute top-[10px] right-[2px]">
-            <DotsOptions fill="#5f5f5f" />
+            <DotsOptions fill="#5f5f5f" setIsOptionsOpen={setIsOptionsOpen} />
           </div>
         </div>
   )

@@ -1,19 +1,25 @@
-import React from "react";
+import { forwardRef, RefObject } from "react";
 
-export default function PrevNextIcon({ref}: any) {
-    const handleArrows = (type: string) => {
-        if(type === 'next'){
-            ref.current.scrollBy({ left: -1000, behavior: "smooth" });
-        }
-        if(type === 'prev'){
-            ref.current.scrollBy({ left: 1000, behavior: "smooth" });
-        }
+const PrevNextIcon = forwardRef<HTMLDivElement>((_, ref) => {
+  const handleArrows = (type: "next" | "prev") => {
+    const currentRef = ref as RefObject<HTMLDivElement>;
+    if (!currentRef.current) return;
 
+    if (type === "next") {
+      currentRef.current.scrollBy({ left: -1000, behavior: "smooth" });
     }
+    if (type === "prev") {
+      currentRef.current.scrollBy({ left: 1000, behavior: "smooth" });
+    }
+  };
+
 
   return (
     <div className="flex gap-2 items-center">
-        <div className="text-[#AEAEB3] hover:text-white cursor-pointer hover:bg-[#2a2b47] p-[5px] rounded-full" onClick={()=>handleArrows('next')}>
+      <div
+        className="text-[#AEAEB3] hover:text-white cursor-pointer hover:bg-[#2a2b47] p-[5px] rounded-full"
+        onClick={() => handleArrows("next")}
+      >
         <svg
           stroke="currentColor"
           fill="currentColor"
@@ -26,7 +32,10 @@ export default function PrevNextIcon({ref}: any) {
           <path d="M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z"></path>
         </svg>
       </div>
-      <div className="text-[#AEAEB3] hover:text-white cursor-pointer hover:bg-[#2a2b47] p-[5px] rounded-full" onClick={()=>handleArrows('prev')}>
+      <div
+        className="text-[#AEAEB3] hover:text-white cursor-pointer hover:bg-[#2a2b47] p-[5px] rounded-full"
+        onClick={() => handleArrows("prev")}
+      >
         <svg
           stroke="currentColor"
           fill="currentColor"
@@ -39,8 +48,9 @@ export default function PrevNextIcon({ref}: any) {
           <path d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z"></path>
         </svg>
       </div>
-
-      
     </div>
   );
-}
+});
+PrevNextIcon.displayName = "PrevNextIcon";
+
+export default PrevNextIcon;

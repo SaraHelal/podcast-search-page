@@ -1,16 +1,17 @@
 import React from "react";
 
-export default function DotsOptions({ fill, setIsOptionsOpen, optionType }: any) {
+interface DotsOptionsProps {
+  fill?: string;
+  setIsOptionsOpen: React.Dispatch<React.SetStateAction<boolean>>; 
+}
+
+export default function DotsOptions({ fill, setIsOptionsOpen }: DotsOptionsProps) {
+  const handleClick = () => {
+    setIsOptionsOpen(prev => !prev);
+  };
+
   return (
-    <div
-      className="cursor-pointer"
-     onClick={() =>
-        setIsOptionsOpen && setIsOptionsOpen((prev: any) => ({
-          type: optionType,
-          status: prev.type === optionType ? !prev.status : true, 
-        }))
-      }
-    >
+    <div className="cursor-pointer" onClick={handleClick}>
       <svg
         stroke="currentColor"
         fill={fill || "currentColor"}

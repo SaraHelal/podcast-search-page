@@ -1,17 +1,21 @@
 import React, { useRef, useState } from "react";
 import DotsOptions from "../icons/DotsOptions";
 import EpisodesList from "./episodes/EpisodesList";
-import { useClickOutside } from "@/hooks/useClickOutside";
 import PrevNextIcon from "../icons/PrevNextIcon";
+import type { EpisodeType } from "@/types"; 
 
-export default function TopEpisodes({ searchQuery, episodes }: any) {
-  const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-  const [episodesLayout, setEpisodesLayout] = useState("compact");
+interface TopEpisodesProps {
+  searchQuery: string;
+  episodes: EpisodeType[];
+}
+
+export default function TopEpisodes({ searchQuery, episodes }: TopEpisodesProps) {
+  const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false);
+const [episodesLayout, setEpisodesLayout] = useState<"grid" | "scrollable" | "compact" | "list">("compact");
   const ref = useRef<HTMLDivElement>(null);
   const ref1 = useRef<HTMLDivElement>(null);
 
-  useClickOutside(ref, () => setIsOptionsOpen(false));
-  const handleOptions = (layout: string) => {
+const handleOptions = (layout: "grid" | "scrollable" | "compact" | "list") => {
     setEpisodesLayout(layout);
     setIsOptionsOpen(false);
   };
@@ -19,15 +23,15 @@ export default function TopEpisodes({ searchQuery, episodes }: any) {
     <div>
       <div className="relative mt-12 flex justify-between items-center border-b border-b-[#2e2e38] py-2">
         <span>Top Episodes for {searchQuery}</span>
+        
         <div className="flex gap-2">
           {episodesLayout === "scrollable" && <PrevNextIcon ref={ref1} />}
           <DotsOptions
             fill="#ffffff"
-            optionType="episodes"
             setIsOptionsOpen={setIsOptionsOpen}
           />
           {isOptionsOpen && (
-            <div className="dotOptionsList" ref={ref}>
+            <div className="dotOptionsList absolute top-full right-0 z-50 bg-[#2e2e38] p-2" ref={ref}>
               {episodesLayout !== "compact" && (
                 <span
                   className="p-[6px] block hover:bg-[#4E366D]"

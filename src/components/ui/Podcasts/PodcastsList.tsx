@@ -1,8 +1,15 @@
 "use client";
 import React from "react";
 import Podcast from "./Podcast";
+import type{ PodcastType } from "@/types";
 
-export default function PodcastsList({ ref, podcasts, layoutType }: any) {
+interface PodcastsListProps {
+  podcasts: PodcastType[];
+  layoutType: "compact" | "list" | "grid" | "scrollable";
+  forwardedRef?: React.Ref<HTMLDivElement>;
+}
+
+export default function PodcastsList({ podcasts, layoutType, forwardedRef }: PodcastsListProps) {
   return (
     <div
       className={
@@ -17,9 +24,9 @@ export default function PodcastsList({ ref, podcasts, layoutType }: any) {
   [&::-webkit-scrollbar-thumb]:bg-[#404080]
   [&::-webkit-scrollbar-thumb]:rounded-full`
       }
-      ref={ref}
+      ref={forwardedRef} 
     >
-      {podcasts && podcasts?.map((item: any, idx: any) => (
+      {podcasts && podcasts?.map((item: PodcastType, idx: number) => (
         <Podcast key={idx} data={item} />
       ))}
     </div>

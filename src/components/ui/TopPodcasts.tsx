@@ -3,18 +3,23 @@ import DotsOptions from "../icons/DotsOptions";
 import PodcastsList from "./Podcasts/PodcastsList";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import PrevNextIcon from "../icons/PrevNextIcon";
+import type { PodcastType } from "@/types";
 
-export default function TopPodcasts({ searchQuery, podcasts }: any) {
-  const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-  const [podcastLayout, setPodcastLayout] = useState("scrollable");
+interface TopPodcastsProps {
+  searchQuery: string;
+  podcasts: PodcastType[];
+}
+
+export default function TopPodcasts({ searchQuery, podcasts }: TopPodcastsProps) {
+  const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false);
+const [podcastLayout, setPodcastLayout] = useState<"scrollable" | "grid">("scrollable");
   const ref = useRef<HTMLDivElement>(null);
   const ref1 = useRef<HTMLDivElement>(null);
 
-  useClickOutside(ref, () => setIsOptionsOpen(false));
-  const handleOptions = (layout: string) => {
-    setPodcastLayout(layout);
-    setIsOptionsOpen(false);
-  };
+const handleOptions = (layout: "scrollable" |  "grid") => {
+  setPodcastLayout(layout);
+  setIsOptionsOpen(false);
+};
   return (
     <div>
       <div className="relative mt-12 flex justify-between items-center border-b border-b-[#2e2e38] py-2">
@@ -25,7 +30,6 @@ export default function TopPodcasts({ searchQuery, podcasts }: any) {
           ) }
           <DotsOptions
             fill="#ffffff"
-            optionType="podcasts"
             setIsOptionsOpen={setIsOptionsOpen}
           />
           {isOptionsOpen && (
@@ -46,7 +50,7 @@ export default function TopPodcasts({ searchQuery, podcasts }: any) {
           )}
         </div>
       </div>
-      <PodcastsList ref={ref1} podcasts={podcasts} layoutType={podcastLayout} />
+      <PodcastsList forwardedRef={ref1} podcasts={podcasts} layoutType={podcastLayout} />
     </div>
   );
 }

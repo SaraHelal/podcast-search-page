@@ -4,7 +4,7 @@ export default function MenuList() {
   return (
     <div className='flex flex-col gap-6 font-semibold'>
         <div className='flex gap-2 items-center cursor-pointer'>
-            <img src="/icons/home-icon.svg" width='15' alt="Menu icon" />
+            <img src="/icons/home-icon.svg" width='15' alt="Menu icon" />            
             <span className='text-sm'>Home</span>
         </div>
         <div className='flex gap-2 items-center cursor-pointer'>

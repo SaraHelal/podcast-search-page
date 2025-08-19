@@ -1,16 +1,27 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import TopPodcasts from "./TopPodcasts";
 import TopEpisodes from "./TopEpisodes";
+import type { EpisodeType, PodcastType } from "@/types";
 
-export default function MainContent({ results, loading, searchQuery }: any) {
+type Results = {
+  podcasts?: PodcastType[];
+  episodes?: EpisodeType[];
+};
+type MainContentProps = {
+  results?: Results;
+  loading: boolean;
+  searchQuery: string;
+};
+
+export default function MainContent({ results, loading, searchQuery }: MainContentProps) {
   const podcasts = results?.podcasts || [];
   const episodes = results?.episodes || [];
 
 
-  if (loading || !results) {
+  // if (loading || !results) {
     return <div className="spinner"></div>;
-  }
+  // }
 
   if (!searchQuery) {
     return (
@@ -32,6 +43,7 @@ export default function MainContent({ results, loading, searchQuery }: any) {
       <TopPodcasts searchQuery={searchQuery} podcasts={podcasts} />
       <TopEpisodes searchQuery={searchQuery} episodes={episodes} />
     
+
     </div>
   );
 }

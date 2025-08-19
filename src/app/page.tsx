@@ -1,12 +1,11 @@
+"use client";
 import Layout from "@/components/layouts/Layout";
-import SearchPage from "@/components/ui/SearchPage";
-import Image from "next/image";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
-   <Layout>
-     <h1></h1>
-   </Layout>
-  // <SearchPage />
+    <Suspense fallback={<div>Loading search results...</div>}>
+      <Layout />
+    </Suspense>
   );
 }

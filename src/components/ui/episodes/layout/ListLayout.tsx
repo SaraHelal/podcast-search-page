@@ -1,24 +1,36 @@
 import DotsOptions from "@/components/icons/DotsOptions";
 import PlayIcon from "@/components/icons/PlayIcon";
-import React from "react";
+import Image from "next/image";
+import React, { useState } from "react";
 
+export interface ListLayoutProps {
+  layoutType: "compact" | "list" | "grid" | "scrollable";
+  img: string;
+  trackName: string;
+  title: string;
+  description: string;
+  formatedToDate: string;
+  episodesDuration: string;
+}
 export default function ListLayout({
-  layoutType,
   img,
   trackName,
   title,
   description,
   formatedToDate,
   episodesDuration,
-}: any) {
+}: ListLayoutProps) {
+  const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false);
   return (
     <div className={`w-full`}>
       <div className="relative flex justify-between gap-4 items-center w-full cursor-pointer h-full">
         <div className="object-cover overflow-hidden w-[100px] h-[100px]">
-          <img
-            src={img}
+          <Image
+            src={img || "images/default-image.png"}
+            width={100}
+            height={100}
             className="w-full h-full object-cover"
-            alt={trackName}
+            alt="image"
           />
         </div>
         <div className="flex-[2_2_0%] text-left flex flex-col justify-between h-full py-4  border-b border-b-[#2e2e38]">
@@ -45,8 +57,8 @@ export default function ListLayout({
           </div>
         </div>
         <div className="flex-[1_1_0%] absolute top-[10px] right-[2px] flex flex-col justify-center gap-6 items-center h-full">
-            <PlayIcon />
-            <DotsOptions fill="#5f5f5f" />
+          <PlayIcon />
+          <DotsOptions fill="#5f5f5f" setIsOptionsOpen={setIsOptionsOpen} />
         </div>
       </div>
     </div>

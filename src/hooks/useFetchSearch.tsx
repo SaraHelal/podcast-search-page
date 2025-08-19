@@ -1,12 +1,8 @@
+import type{ ResultsType } from "@/types";
 import React, { useEffect, useState } from "react";
 
-interface SearchResults {
-  podcasts: any[];
-  episodes: any[];
-}
-
 export default function useFetchSearch(searchQuery: string) {
-  const [results, setResults] = useState<SearchResults>({ podcasts: [], episodes: [] });
+  const [results, setResults] = useState<ResultsType>({ podcasts: [], episodes: [] });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
