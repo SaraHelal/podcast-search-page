@@ -11,7 +11,7 @@ export default function MenuList() {
             <img src="/icons/discover-line.svg" width='15' alt="Menu icon" />
             <span className='text-sm'>Discover</span>
         </div>
-        <div className='italic'>Your Stuff</div>
+        <div className='italic text-sm text-[#a3a3a8] font-bold uppercase -mb-[10px]'>Your Stuff</div>
         <div className='flex gap-2 items-center'>
             <img src="/icons/my-queue-line.svg" width='15' alt="Menu icon" />
             <span className='text-sm'>My Queue</span>

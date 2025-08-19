@@ -7,7 +7,6 @@ export default function MainContent({ results, loading, searchQuery }: any) {
   const podcasts = results?.podcasts || [];
   const episodes = results?.episodes || [];
 
-  const [podcastLayout, setPodcastLayout] = useState("scrollable");
 
   if (loading || !results) {
     return <div className="spinner"></div>;
@@ -30,8 +29,8 @@ export default function MainContent({ results, loading, searchQuery }: any) {
   }
   return (
     <div>
-      <TopPodcasts searchQuery={searchQuery} podcasts={podcasts} podcastLayout={podcastLayout} setPodcastLayout={setPodcastLayout} />
-      <TopEpisodes searchQuery={searchQuery} episodes={episodes} podcastLayout={podcastLayout} setPodcastLayout={setPodcastLayout}/>
+      <TopPodcasts searchQuery={searchQuery} podcasts={podcasts} />
+      <TopEpisodes searchQuery={searchQuery} episodes={episodes} />
     
     </div>
   );

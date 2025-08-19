@@ -8,8 +8,8 @@ export default function PodcastsList({ podcasts, layoutType }: any) {
     <div
       className={
         layoutType === "grid"
-          ? "grid grid-cols-6 gap-[15px] gap-y-[20px] py-[15px]"
-          : `flex gap-4 items-center overflow-hidden flex-nowrap pt-4 
+          ? "flex xl:grid xl:grid-cols-6 gap-[15px] gap-y-[20px] py-[15px] flex-wrap"
+          : `flex gap-4 items-center overflow-hidden flex-nowrap  py-4 
     
   overflow-x-auto
   [&::-webkit-scrollbar]:h-0.5 hover:[&::-webkit-scrollbar]:h-2

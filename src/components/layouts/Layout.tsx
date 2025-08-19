@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+"use client"
+import React, { useState } from "react";
 import Header from "../ui/Header";
 import MainContent from "../ui/MainContent";
 import Sidebar from "../ui/Sidebar";
 import { useSearchParams } from "next/navigation";
 import useFetchSearch from "@/hooks/useFetchSearch";
 
-export default function Layout({ children }: any) {
+export default function Layout() {
   const params = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(params.get("q") || "");
   const { results, loading } = useFetchSearch(searchQuery);
