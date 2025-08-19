@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Podcast(data: any) {
-  console.log('podcast: ', data)
   const podcastImg = data.data?.artworkUrl600 || data.data?.artworkUrl100 || data.data?.artworkUrl60 || data.data?.artworkUrl30
   return (
     <div className="flex flex-col gap-1 cursor-pointer">

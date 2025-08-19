@@ -14,7 +14,7 @@ export default function MainContent({ results, loading, searchQuery }: any) {
 
   if (!searchQuery) {
     return (
-      <div className="flex justify-center items-center text-[#BABABF] h-1/3">
+      <div className="flex justify-center items-center text-[#BABABF] h-[300px]">
         Type in a search term to start.
       </div>
     );
@@ -22,7 +22,7 @@ export default function MainContent({ results, loading, searchQuery }: any) {
 
   if (podcasts.length === 0 && episodes.length === 0) {
     return (
-      <div className="flex justify-center items-center text-[#BABABF] h-1/3">
+      <div className="flex justify-center items-center text-[#BABABF] h-[300px]">
         No results found.
       </div>
     );

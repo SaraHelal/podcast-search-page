@@ -3,57 +3,65 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+Arabic:wght@400;600&display=swap");
 
 @font-face {
-  font-family: 'IBMPlexSansArabic';
-  src: url('/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Regular.otf') format('opentype');
+  font-family: "IBMPlexSansArabic";
+  src: url("/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Regular.otf")
+    format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'IBMPlexSansArabic';
-  src: url('/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Bold.otf') format('opentype');
+  font-family: "IBMPlexSansArabic";
+  src: url("/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Bold.otf")
+    format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'IBMPlexSansArabic';
-  src: url('/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Light.otf') format('opentype');
+  font-family: "IBMPlexSansArabic";
+  src: url("/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Light.otf")
+    format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'IBMPlexSansArabic';
-  src: url('/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Thin.otf') format('opentype');
+  font-family: "IBMPlexSansArabic";
+  src: url("/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Thin.otf")
+    format("opentype");
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'IBMPlexSansArabic';
-  src: url('/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Medium.otf') format('opentype');
+  font-family: "IBMPlexSansArabic";
+  src: url("/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Medium.otf")
+    format("opentype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'IBMPlexSansArabic';
-  src: url('/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-SemiBold.otf') format('opentype');
+  font-family: "IBMPlexSansArabic";
+  src: url("/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-SemiBold.otf")
+    format("opentype");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'IBMPlexSansArabic';
-  src: url('/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-ExtraLight.otf') format('opentype');
+  font-family: "IBMPlexSansArabic";
+  src: url("/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-ExtraLight.otf")
+    format("opentype");
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'IBMPlexSansArabic';
-  src: url('/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Text.otf') format('opentype');
+  font-family: "IBMPlexSansArabic";
+  src: url("/fonts/IBM-Plex-Sans-Arabic/IBMPlexSansArabic-Text.otf")
+    format("opentype");
   font-weight: 450;
   font-style: normal;
 }
@@ -73,7 +81,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'IBMPlexSansArabic', sans-serif;
+  font-family: "IBMPlexSansArabic", sans-serif;
 }
 header {
   background-color: red;
@@ -108,7 +116,7 @@ header {
 
 .dotOptionsList {
   top: 38px;
-  right: 10px;
+  right: -4px;
   background: -webkit-linear-gradient(bottom left, #404080, #6b4080);
   background: -moz-linear-gradient(bottom left, #404080, #6b4080);
   background: -o-linear-gradient(bottom left, #404080, #6b4080);
@@ -128,4 +136,17 @@ header {
   font-size: 14px;
   cursor: pointer;
   padding: 6px;
+}
+.dotOptionsList::after {
+  bottom: 100%;
+  right: 10px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: hsl(279, 23%, 46%);
+  border-width: 5px;
 }

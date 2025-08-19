@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Podcast from "./Podcast";
 
 export default function PodcastsList({ ref, podcasts, layoutType }: any) {
-  console.log("podcast: ", layoutType);
   return (
     <div
       className={
@@ -20,7 +19,7 @@ export default function PodcastsList({ ref, podcasts, layoutType }: any) {
       }
       ref={ref}
     >
-      {podcasts?.map((item: any, idx: any) => (
+      {podcasts && podcasts?.map((item: any, idx: any) => (
         <Podcast key={idx} data={item} />
       ))}
     </div>

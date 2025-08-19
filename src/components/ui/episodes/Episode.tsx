@@ -12,7 +12,6 @@ export default function Episode({ data, layoutType }: any) {
     day: "numeric",
   });
   const episodesDuration = TimeMillisToMins(data?.trackTimeMillis)
-  console.log("data:", data);
   const podcastImg =
     data?.artworkUrl60 || data?.artworkUrl160 || data?.artworkUrl600;
   return (
